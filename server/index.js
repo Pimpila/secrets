@@ -22,9 +22,9 @@ app.get('/', function (req, res) {
     res.redirect('/secrets');
 });
 
-models.Secret.sync()
+models.Secret.sync({force: false})
     .then(function () {
-        return models.Comment.sync();
+        return models.Comment.sync({force: false});
     })
     .then(function () {
         app.listen(3001, function () {
